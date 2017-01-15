@@ -1,0 +1,19 @@
+# docker run --rm
+#            --name snapclient
+#            --device=/dev/snd
+#            stilllman/docker-snapclient
+
+FROM resin/rpi-raspbian:jessie
+#debian:jessie
+RUN  apt-get update \
+  && apt-get install -y \
+     wget
+ENV  snapcast_version 0.10.0
+RUN  wget https://github.com/badaix/snapcast/releases/download/v${snapcast_version}/snapclient_${snapcast_version}_armhf.deb
+RUN  dpkg -i snapclient_${snapcast_version}_armhf.deb \
+  ;  apt-get update \
+  && apt-get -f install -y \
+  && rm -rf /var/lib/apt/lists/*
+ENV HOST snapserver
+ENTRYPOINT ["/bin/bash","-c","snapclient -h $HOST"]
+#CMD ["-h", "snapserver"]

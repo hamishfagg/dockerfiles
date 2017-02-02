@@ -17,7 +17,7 @@ RUN  apt-get update
 RUN  apt-get install -y \
      python-pip mopidy
 RUN  apt-get remove -y python-pyasn1
-RUN  pip install Mopidy-Scrobbler Mopidy-TuneIn Mopidy-Moped Mopidy-GMusic Mopidy-Party
+RUN  pip install Mopidy-Scrobbler Mopidy-Moped Mopidy-GMusic Mopidy-Party
 
 COPY mopidy.conf /root/.config/mopidy_default.conf
 COPY mopidy.sh /usr/local/bin/mopidy.sh

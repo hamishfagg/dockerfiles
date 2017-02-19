@@ -9,7 +9,7 @@ Mopidy-Multiroom aims to provide simple multi-room audio through docker, without
 Together, Mopidy-Multiroom aims to provide a simple to set up music sever for both parts above.
 
 ##Running Mopidy-Multiroom
-Clone the repo and `cd` to the Mopidy-Multiroom directory:
+####Clone the repo and `cd` to the Mopidy-Multiroom directory:
 ![clone](images/cloneandcd.gif)
 
 

@@ -19,13 +19,23 @@ Run Mopidy-Multiroom with `docker-compose up`!
 It's this easy:
 
 ![install](images/install.gif)
-
+(Don't worry about the end of file errors - that's just snapcast saying that there's nothing playing).
 
 ##Add Your Own Music Collection
 If you'd like, you dont have to use any music service at all. Just create a symlink to your collection called "music" in the same folder:  
 `ln -s /path/to/my/music music`
 
 
-##Connecting Clients
+##Connect Clients
+You can now connect any Snapcast client you'd like. For convenience I have dockerfiles for a normal [snapcast client](https://github.com/IVData/dockerfiles/tree/master/snapclient) and a [r-pi client](https://github.com/IVData/dockerfiles/tree/master/rpi-snapclient) in this repo. You can also download the Snapcast [Android client](https://github.com/badaix/snapcast/releases/latest) which is really useful for testing and adjusting latencies.
+
+##Play Music
+Mopidy-Multiroom comes with two web-UIs installed.  
+A fully featured UI call [Moped](https://github.com/martijnboland/moped) will be available at:  
+`http://<your-server-ip>:6680/moped`  
+
+Another simple UI is installed called [Mopidy-Party](https://github.com/Lesterpig/mopidy-party) which is great for collaborative partying!
+
 
 ##Changing More Mopidy or Snapcast Options
+In order to configure either Mopidy or Snapcast more, you'll need to install and run both of my containers separately in docker. Visit the respective readmes for [Mopidy](https://github.com/IVData/dockerfiles/tree/master/mopidy) and [Snapserver](https://github.com/IVData/dockerfiles/tree/master/snapserver) to get hacking!

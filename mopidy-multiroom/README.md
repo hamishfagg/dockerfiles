@@ -18,7 +18,7 @@ Run Mopidy-Multiroom with `docker-compose up`!
 
 It's this easy:
 
-~[install](images/install.gif)
+![install](images/install.gif)
 
 
 ##Add Your Own Music Collection

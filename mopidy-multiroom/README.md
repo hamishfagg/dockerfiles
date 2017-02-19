@@ -34,7 +34,8 @@ Mopidy-Multiroom comes with two web-UIs installed.
 A fully featured UI call [Moped](https://github.com/martijnboland/moped) will be available at:  
 `http://<your-server-ip>:6680/moped`  
 
-Another simple UI is installed called [Mopidy-Party](https://github.com/Lesterpig/mopidy-party) which is great for collaborative partying!
+Another simple UI is installed called [Mopidy-Party](https://github.com/Lesterpig/mopidy-party) which is great for collaborative partying! Mopidy-Party will be available at:  
+`http://<your-server-ip>:6680/party`
 
 
 ##Changing More Mopidy or Snapcast Options

@@ -24,3 +24,8 @@ It's this easy:
 ##Add Your Own Music Collection
 If you'd like, you dont have to use any music service at all. Just create a symlink to your collection called "music" in the same folder:  
 `ln -s /path/to/my/music music`
+
+
+##Connecting Clients
+
+##Changing More Mopidy or Snapcast Options

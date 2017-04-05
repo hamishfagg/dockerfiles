@@ -11,5 +11,5 @@ To run, use the command below, but you can change the following values:
 
 `docker run --rm -v /tmp/snapcast:/tmp -p 1704:1704 -p 1705:1705 ivdata/snapserver`
 
-##Snapcast Updates
+## Snapcast Updates
 This dockerfile uses an environment variable for the Snapcast version. If a newer version of Snapcast is available you can rebuild this image to use it - then please let me know that Snapcast has been updated.

@@ -1,4 +1,4 @@
-FROM resin/raspbian:jessie
+FROM resin/rpi-raspbian:jessie
 
 ARG  snapcast_version=0.11.1
 

@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-ARG  snapcast_version=0.10.0
+ARG  snapcast_version=0.11.1
 
 RUN  apt-get update \
   && apt-get install -y \

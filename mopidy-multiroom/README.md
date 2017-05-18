@@ -19,9 +19,10 @@ Run Mopidy-Multiroom with `docker-compose up`!
 It's this easy:
 
 ![install](images/install.gif)
+
 (Don't worry about the end of file errors - that's just snapcast saying that there's nothing playing).
 
-##Add Your Own Music Collection
+## Add Your Own Music Collection
 If you'd like, you dont have to use any music service at all. Just create a symlink to your collection called "music" in the same folder:  
 `ln -s /path/to/my/music music`
 

@@ -9,12 +9,12 @@ Mopidy-Multiroom aims to provide simple multi-room audio through docker, without
 Together, Mopidy-Multiroom aims to provide a simple to set up music sever for both parts above.
 
 ## Running Mopidy-Multiroom
-Clone the repo and `cd` to the Mopidy-Multiroom directory:  
+1. Clone the repo and `cd` to the Mopidy-Multiroom directory:  
 `git clone https://github.com/IVData/dockerfiles && cd dockerfiles/mopidy-multiroom`
 
-Edit `logins.env` and enter your username and password for the service(s) of your choice.
+2. Edit `logins.env` and enter your username and password for the service(s) of your choice.
 
-Run Mopidy-Multiroom with `docker-compose up`!
+3. Run Mopidy-Multiroom with `docker-compose up`!
 
 It's this easy:
 
@@ -23,7 +23,7 @@ It's this easy:
 (Don't worry about the end of file errors - that's just snapcast saying that there's nothing playing).
 
 ## Add Your Own Music Collection
-If you'd like, you dont have to use any music service at all. Just create a symlink to your collection called "music" in the same folder:  
+If you'd like, you dont have to use any music service at all. Just create a symlink to your collection called "music" in the Mopidy-Multiroom folder:  
 `ln -s /path/to/my/music music`
 
 

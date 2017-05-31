@@ -15,3 +15,5 @@ snapserver:
         - "1705:1705"
     volumes:
         - fifo:/tmp/
+    environment:
+        - stream_name=Mopidy

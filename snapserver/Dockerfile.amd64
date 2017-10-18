@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-ARG  snapcast_version=0.11.1
+ARG  snapcast_version=0.12.0
 ENV  stream_name Snapserver
 
 RUN  apt-get update \

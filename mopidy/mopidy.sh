@@ -20,4 +20,9 @@ if [ -n "$GMUSIC_USERNAME" ]; then
     sed -i "/\[gmusic\]/,/\[.*\]/ s/password.*/password = ${GMUSIC_PASSWORD}/" /root/.config/mopidy/mopidy.conf
 fi
 
+
+if  [ -n "$MOPIDY_PACKAGES" ]; then
+    pip install $MOPIDY_PACKAGES
+fi
+
 exec mopidy

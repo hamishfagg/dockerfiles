@@ -21,7 +21,7 @@ if [ -n "$GMUSIC_USERNAME" ]; then
 fi
 
 
-if  [ -n "$MOPIDY_PACKAGES" ]; then
+if  [ ${MOPIDY_PACKAGES:+x} ]; then
     pip install $MOPIDY_PACKAGES
 fi
 

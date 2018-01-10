@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-RUN  apt-get update
+RUN  apt-get update --fix-missing
 RUN  apt-get install -y \
      wget
 RUN  wget -q -O - https://apt.mopidy.com/mopidy.gpg | apt-key add -

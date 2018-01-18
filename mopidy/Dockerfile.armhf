@@ -1,15 +1,12 @@
-FROM resin/rpi-raspbian:jessie
 #FROM ubuntu:16.04
-RUN  apt-get update
-RUN  apt-get install -y \
-     wget
+FROM resin/rpi-raspbian:jessie
+RUN  apt-get update --fix-missing
+RUN  apt-get install -y wget
 RUN  wget -q -O - https://apt.mopidy.com/mopidy.gpg | apt-key add -
 RUN  wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/jessie.list
-RUN  apt-get update
-RUN  apt-get install -y \
-     python-pip mopidy
+RUN  apt-get update --fix-missing
+RUN  apt-get install -y python-pip mopidy build-essential
 RUN  apt-get remove -y python-pyasn1
-RUN  pip install Mopidy-Scrobbler Mopidy-TuneIn Mopidy-Moped Mopidy-GMusic Mopidy-Party
 
 COPY mopidy.conf /root/.config/mopidy_default.conf
 COPY mopidy.sh /usr/local/bin/mopidy.sh

@@ -20,9 +20,19 @@ if [ -n "$GMUSIC_USERNAME" ]; then
     sed -i "/\[gmusic\]/,/\[.*\]/ s/password.*/password = ${GMUSIC_PASSWORD}/" /root/.config/mopidy/mopidy.conf
 fi
 
-
-if  [ ${MOPIDY_PACKAGES:+x} ]; then
-    pip install $MOPIDY_PACKAGES
+if [ ${APT_PACKAGES:+x} ]; then
+    echo "-- INSTALLING APT PACKAGES $APT_PACKAGES --"
+    apt-get install -y $APT_PACKAGES
+fi
+if  [ ${PIP_PACKAGES:+x} ]; then
+    echo "-- INSTALLING PIP PACKAGES $PIP_PACKAGES --"
+    pip install $PIP_PACKAGES
+fi
+if [ ${UPDATE:+x} ]; then
+    echo "-- UPDATING ALL PACKAGES --"
+    apt-get update
+    apt-get upgrade -y
+    pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U # Upgrade all pip packages
 fi
 
 exec mopidy

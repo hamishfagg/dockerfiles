@@ -13,6 +13,13 @@ fi
 if [ -n "$SPOTIFY_PASSWORD" ]; then
     sed -i "/\[spotify\]/,/\[.*\]/ s/password.*/password = ${SPOTIFY_PASSWORD}/" /root/.config/mopidy/mopidy.conf
 fi
+if [ -n "$SPOTIFY_CLIENT_ID" ]; then
+    sed -i "/\[spotify\]/,/\[.*\]/ s/client_id.*/client_id = ${SPOTIFY_CLIENT_ID}/" /root/.config/mopidy/mopidy.conf
+fi
+if [ -n "$SPOTIFY_CLIENT_SECRET" ]; then
+    sed -i "/\[spotify\]/,/\[.*\]/ s/client_secret.*/client_secret = ${SPOTIFY_CLIENT_SECRET}/" /root/.config/mopidy/mopidy.conf
+fi
+
 if [ -n "$GMUSIC_USERNAME" ]; then
     sed -i "/\[gmusic\]/,/\[.*\]/ s/username.*/username = ${GMUSIC_USERNAME}/" /root/.config/mopidy/mopidy.conf
 fi

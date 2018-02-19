@@ -1,7 +1,7 @@
 FROM resin/rpi-raspbian:jessie
 
 ARG  snapcast_version=0.12.0
-ENV  stream_name Snapserver
+ENV  STREAM_NAME Snapserver
 
 RUN  apt-get update \
   && apt-get install -y \
@@ -13,5 +13,5 @@ RUN  dpkg -i snapserver_${snapcast_version}_armhf.deb \
   && apt-get -f install -y \
   && rm -rf /var/lib/apt/lists/*
 EXPOSE 1704 1705
-ENTRYPOINT ["sh","-c","snapserver -s pipe:///tmp/snapfifo?name=$stream_name"]
+ENTRYPOINT ["sh","-c","snapserver -s pipe:///tmp/snapfifo?name=$STREAM_NAME"]
 

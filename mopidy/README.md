@@ -8,7 +8,7 @@ allows MPD and HTTP connections from any host.
 Run the container once with `-v /some/dir:/root/.config/mopidy` and the default config file will be copied across. Then you can edit as you would with a normal Mopidy install. You can specify login details in the config file and not in environment vars if you prefer.
 
 ## Installing Mopidy Extensions
-By default this image does not contain any extensions. You can specify which apt and pip packages you want to install though, with the `APT_PACKAGES` and `PIP_PACKAGES` env vars. You should set these to space-delimited lists of packages you want installed in the container. Upon boot, the container will make sure these packages are installed.
+By default this image contains backend extensions for TuneIn, GMusic, and Spotify from pip. You can specify which extra apt and pip packages you want to install though, with the `APT_PACKAGES` and `PIP_PACKAGES` env vars. You should set these to space-delimited lists of packages you want installed in the container. Upon boot, the container will make sure these packages are installed.
 
 ## Updating Mopidy / Extensions
 If you specify the `UPDATE` env var (set it to anything) the container will update **all** apt and pip packages before starting.

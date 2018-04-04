@@ -1,4 +1,4 @@
-FROM multiarch/debian-debootstrap:armhf-jessie-slim
+FROM multiarch/debian-debootstrap:amd-jessie-slim
 
 ARG snapcast_version=0.13.0
 ENV HOST snapserver

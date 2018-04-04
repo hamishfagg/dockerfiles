@@ -1,11 +1,10 @@
-FROM debian:jessie
+FROM multiarch/debian-debootstrap:amd64-jessie-slim
 
-ARG  snapcast_version=0.12.0
+ARG  snapcast_version=0.13.0
 ENV  STREAM_NAME Snapserver
 
 RUN  apt-get update \
-  && apt-get install -y \
-     wget \
+  && apt-get install -y wget ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 RUN  wget https://github.com/badaix/snapcast/releases/download/v${snapcast_version}/snapserver_${snapcast_version}_amd64.deb
 RUN  dpkg -i snapserver_${snapcast_version}_amd64.deb \

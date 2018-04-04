@@ -28,7 +28,7 @@ If you'd like, you dont have to use any music service at all. Just create a syml
 
 
 ## Connect Clients
-You can now connect any Snapcast client you'd like. For convenience I have dockerfiles for a normal [snapcast client](https://github.com/IVData/dockerfiles/tree/master/snapclient) and a [r-pi client](https://github.com/IVData/dockerfiles/tree/master/rpi-snapclient) in this repo. You can also download the Snapcast [Android client](https://github.com/badaix/snapcast/releases/latest) which is really useful for testing and adjusting latencies.
+You can now connect any Snapcast client you'd like. For convenience I have a dockerfile for a [snapcast client](https://github.com/IVData/dockerfiles/tree/master/snapclient) in this repo. You can also download the Snapcast [Android client](https://github.com/badaix/snapcast/releases/latest) which is really useful for testing and adjusting latencies.
 
 ## Play Music
 Mopidy-Multiroom comes with two web-UIs installed.  

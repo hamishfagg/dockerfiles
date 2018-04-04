@@ -8,8 +8,9 @@ To run, use the command below, but you can change the following values:
 
 * `/tmp/snapcast` a temporary directory for Snapcast to create it's fifo inside.
 * `1705 and 1704` the ports used by Snapserver. You currently can't configure the internal ports used but can change the external ones.
+* `snapstream` the snapcast stream name to use.
 
-`docker run --rm -v /tmp/snapcast:/tmp -p 1704:1704 -p 1705:1705 ivdata/snapserver`
+`docker run --rm -v /tmp/snapcast:/tmp -p 1704:1704 -p 1705:1705 -e STREAM_NAME=snapstream ivdata/snapserver`
 
 ## Snapcast Updates
 This dockerfile uses an environment variable for the Snapcast version. If a newer version of Snapcast is available you can rebuild this image to use it - then please let me know that Snapcast has been updated.

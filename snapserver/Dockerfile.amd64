@@ -11,6 +11,7 @@ RUN  dpkg -i snapserver_${snapcast_version}_amd64.deb \
   ;  apt-get update \
   && apt-get -f install -y \
   && rm -rf /var/lib/apt/lists/*
+COPY snapserver.conf /etc/default/snapserver
 EXPOSE 1704 1705
-ENTRYPOINT ["sh","-c","snapserver -s pipe:///tmp/snapfifo?name=$STREAM_NAME"]
+ENTRYPOINT ["snapserver"]
 

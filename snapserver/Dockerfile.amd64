@@ -14,4 +14,4 @@ RUN  dpkg -i snapserver_${snapcast_version}_amd64.deb \
 RUN snapserver -v
 COPY snapserver.conf /etc/default/snapserver
 EXPOSE 1704 1705
-ENTRYPOINT ["snapserver"]
+ENTRYPOINT ["export","/etc/default/snapserver","&&","snapserver","$SNAPSERVER_OPTS"]

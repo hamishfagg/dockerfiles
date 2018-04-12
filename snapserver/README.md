@@ -12,5 +12,10 @@ To run, use the command below, but you can change the following values:
 
 `docker run --rm -v /tmp/snapcast:/tmp -p 1704:1704 -p 1705:1705 -e STREAM_NAME=snapstream ivdata/snapserver`
 
+## Config
+You can overwrite snapcast's config by mounting a file to `/etc/default/snapserver` in the container. The default settings are:
+
+`SNAPSERVER_OPTS="-s pipe:///tmp/snapfifo?name=$STREAM_NAME"`
+
 ## Snapcast Updates
 This dockerfile uses an environment variable for the Snapcast version. If a newer version of Snapcast is available you can rebuild this image to use it - then please let me know that Snapcast has been updated.

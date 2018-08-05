@@ -20,8 +20,8 @@ class RequestHandler(BaseHTTPRequestHandler):
         else:
             postvars = {}
 
-        call(["/bin/sh", "-c", "wget -O /tmp/upfile " + postvars["url"][0]])
-        call(["/bin/sh", "-c", "./uploadr.py --notify " + postvars["notify"][0] + " /tmp/upfile"])
+        call(["/bin/sh", "-c", "wget -O /tmp/upfile.jpg " + postvars["url"][0]])
+        call(["/bin/sh", "-c", "./uploadr.py --notify " + postvars["notify"][0] + " /tmp/upfile.jpg"])
         self.send_response(200)
 
 def main():

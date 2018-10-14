@@ -1,6 +1,6 @@
 FROM multiarch/debian-debootstrap:amd64-jessie-slim
 
-ARG  snapcast_version=0.14.0
+ARG  snapcast_version=0.15.0
 ENV  STREAM_NAME Snapserver
 
 RUN  apt-get update \

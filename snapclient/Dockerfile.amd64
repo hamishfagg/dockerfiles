@@ -11,5 +11,5 @@ RUN  dpkg -i snapclient_${snapcast_version}-1_amd64.deb \
   ;  apt-get update \
   && apt-get -f install -y \
   && rm -rf /var/lib/apt/lists/*
-RUN snapclient -v
-ENTRYPOINT ["/bin/bash","-c","snapclient -h $HOST"]
+RUN /usr/bin/snapclient -v
+ENTRYPOINT ["/bin/bash","-c","/usr/bin/snapclient -h $HOST"]

@@ -11,7 +11,7 @@ RUN  dpkg -i snapserver_${snapcast_version}-1_armhf.deb \
   ;  apt-get update \
   && apt-get -f install -y \
   && rm -rf /var/lib/apt/lists/*
-RUN snapserver -v
+RUN /usr/bin/snapserver -v
 COPY snapserver.conf /etc/default/snapserver
 EXPOSE 1704 1705
-ENTRYPOINT ["/bin/bash","-c","source /etc/default/snapserver && snapserver $SNAPSERVER_OPTS"]
+ENTRYPOINT ["/bin/bash","-c","source /etc/default/snapserver && /usr/bin/snapserver $SNAPSERVER_OPTS"]

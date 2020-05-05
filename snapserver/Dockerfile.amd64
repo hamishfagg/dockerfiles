@@ -1,7 +1,6 @@
 FROM multiarch/debian-debootstrap:amd64-bullseye-slim
 
 ARG  snapcast_version=0.19.0
-ENV  STREAM_NAME Snapserver
 
 RUN  apt-get update \
   && apt-get install -y wget ca-certificates \
@@ -12,6 +11,6 @@ RUN  dpkg -i snapserver_${snapcast_version}-1_amd64.deb \
   && apt-get -f install -y \
   && rm -rf /var/lib/apt/lists/*
 RUN /usr/bin/snapserver -v
-COPY snapserver.conf /etc/default/snapserver
+COPY snapserver.conf /etc/snapserver.conf
 EXPOSE 1704 1705
-ENTRYPOINT ["/bin/bash","-c","source /etc/default/snapserver && /usr/bin/snapserver $SNAPSERVER_OPTS"]
+ENTRYPOINT ["/bin/bash","-c","/usr/bin/snapserver"]

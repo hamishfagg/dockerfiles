@@ -1,14 +1,40 @@
-FROM multiarch/ubuntu-debootstrap:amd64-xenial-slim
-RUN  apt-get update
-RUN  apt-get install -y software-properties-common
-RUN  apt-add-repository universe
-RUN  apt-get install -y wget
-RUN  wget -q -O - https://apt.mopidy.com/mopidy.gpg | apt-key add -
-RUN  wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/jessie.list
-RUN  apt-get update --fix-missing
-RUN  apt-get install -y python-pip mopidy build-essential libspotify12 python-spotify gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly
-RUN  apt-get remove -y python-pyasn1
-RUN  pip install Mopidy-TuneIn Mopidy-GMusic Mopidy-Spotify Mopidy-Moped Mopidy-Party
+FROM ubuntu:focal
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    wget \
+    ca-certificates \
+    gnupg && \
+    rm -rf /var/lib/apt/lists/*
+    
+RUN wget -q -O - https://apt.mopidy.com/mopidy.gpg | apt-key add - && \
+    wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    tzdata \
+    build-essential \
+    python3-dev \
+    python3-pip \
+    python3-gst-1.0 \
+    gir1.2-gstreamer-1.0 \
+    gir1.2-gst-plugins-base-1.0 \
+    gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-ugly \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-libav \
+    gstreamer1.0-tools \
+    libspotify12 \
+    python3-spotify && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install \
+    Mopidy \
+    Mopidy-MPD \
+    Mopidy-Local \
+    Mopidy-TuneIn \
+    Mopidy-GMusic \
+    Mopidy-Spotify \
+    Mopidy-Iris
 
 COPY mopidy.conf /root/.config/mopidy_default.conf
 COPY mopidy.sh /usr/local/bin/mopidy.sh

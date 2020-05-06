@@ -1,16 +1,18 @@
-FROM ubuntu:focal
+FROM python:slim
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     wget \
     ca-certificates \
     gnupg && \
     rm -rf /var/lib/apt/lists/*
-    
+
+RUN ls /etc/ssl/certs
 RUN wget -q -O - https://apt.mopidy.com/mopidy.gpg | apt-key add - && \
     wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends \
     tzdata \
     build-essential \
     python3-dev \
@@ -24,7 +26,16 @@ RUN apt-get update && \
     gstreamer1.0-libav \
     gstreamer1.0-tools \
     libspotify12 \
+    libspotify-dev \
+    libxml2-dev \
+    libxslt1-dev \
     python3-spotify && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    libffi-dev \
+    libz-dev && \
     rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install \
@@ -36,6 +47,7 @@ RUN pip3 install \
     Mopidy-Spotify \
     Mopidy-Iris
 
+RUN mkdir -p /mopidy/data
 COPY mopidy.conf /root/.config/mopidy_default.conf
 COPY mopidy.sh /usr/local/bin/mopidy.sh
 

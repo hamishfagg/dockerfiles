@@ -12,32 +12,19 @@ Together, Mopidy-Multiroom aims to provide a simple to set up music sever for bo
 1. Clone the repo and `cd` to the Mopidy-Multiroom directory:  
 `git clone https://github.com/IVData/dockerfiles && cd dockerfiles/mopidy-multiroom`
 
-2. Edit `logins.env` and enter your username and password for the service(s) of your choice.
+2. Create a symlink or put your music in the music folder (or don't, if you plan to use Spotify or Google Play Music).
 
-3. Run Mopidy-Multiroom with `docker-compose up`!
+3. Run Mopidy-Multiroom with `docker-compose up`! That's it!
 
-It's this easy:
-
-![install](images/install.gif)
-
-(Don't worry about the end of file errors - that's just snapcast saying that there's nothing playing).
-
-## Add Your Own Music Collection
-If you'd like, you dont have to use any music service at all. Just create a symlink to your collection called "music" in the Mopidy-Multiroom folder:  
-`ln -s /path/to/my/music music`
+If you want to alter the mopidy config to enable Spotify or Google Play Music for example, the config will now be in the mopidydata folder.
 
 
 ## Connect Clients
-You can now connect any Snapcast client you'd like. For convenience I have a dockerfile for a [snapcast client](https://github.com/IVData/dockerfiles/tree/master/snapclient) in this repo. You can also download the Snapcast [Android client](https://github.com/badaix/snapcast/releases/latest) which is really useful for testing and adjusting latencies.
+You can now connect any Snapcast client you'd like. For convenience I have a dockerfile for a [snapcast client](https://github.com/IVData/dockerfiles/tree/master/snapclient) in this repo. You can also download the Snapcast [Android client](https://play.google.com/store/apps/details?id=de.badaix.snapcast&hl=en) which is really useful for testing and adjusting latencies.
 
 ## Play Music
-Mopidy-Multiroom comes with two web-UIs installed.  
-A fully featured UI call [Moped](https://github.com/martijnboland/moped) will be available at:  
-`http://<your-server-ip>:6680/moped`  
-
-Another simple UI is installed called [Mopidy-Party](https://github.com/Lesterpig/mopidy-party) which is great for collaborative partying! Mopidy-Party will be available at:  
-`http://<your-server-ip>:6680/party`
-
+Mopidy-Multiroom comes with a fully featured UI called [Iris](https://mopidy.com/ext/iris/) which will be available at:  
+`http://<your-server-ip>:6680/iris`  
 
 ## Changing More Mopidy or Snapcast Options
 In order to configure either Mopidy or Snapcast more, you'll need to install and run both of my containers separately in docker. Visit the respective readmes for [Mopidy](https://github.com/IVData/dockerfiles/tree/master/mopidy) and [Snapserver](https://github.com/IVData/dockerfiles/tree/master/snapserver) to get hacking!

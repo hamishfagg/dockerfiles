@@ -1,12 +1,12 @@
 mopidy:
-    env_file: logins.env
     image: "ivdata/mopidy"
     ports:
         - "6680:6680"
         - "6600:6600"
     volumes:
-        - fifo:/tmp/
-        - ./music:/media
+        - fifo:/tmp/snapcast/
+        - ./music:/media/music
+	- ./mopidydata:/mopidy
 
 snapserver:
     image: "ivdata/snapserver"
@@ -14,6 +14,4 @@ snapserver:
         - "1704:1704"
         - "1705:1705"
     volumes:
-        - fifo:/tmp/
-    environment:
-        - stream_name=Mopidy
+        - fifo:/tmp/snapcast/

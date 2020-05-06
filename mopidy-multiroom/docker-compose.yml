@@ -6,7 +6,7 @@ mopidy:
     volumes:
         - fifo:/tmp/snapcast/
         - ./music:/media/music
-	- ./mopidydata:/mopidy
+        - ./mopidydata:/mopidy
 
 snapserver:
     image: "ivdata/snapserver"

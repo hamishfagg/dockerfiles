@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Copy config if it does not already exist
-if [ ! -f /root/.config/mopidy/mopidy.conf ]; then
+if [ ! -f /mopidy/mopidy.conf ]; then
     cp /root/.config/mopidy_default.conf /mopidy/mopidy.conf
 fi
 

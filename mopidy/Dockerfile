@@ -52,7 +52,7 @@ RUN useradd -ms /bin/bash mopidy
 RUN sh -c 'echo "mopidy ALL=NOPASSWD: /usr/local/lib/python3.7/dist-packages/mopidy_iris/system.sh" >> /etc/sudoers'
 RUN sed -i 's+--config .*mopidy.conf+--config /mopidy/mopidy.conf+g' /usr/local/lib/python3.7/dist-packages/mopidy_iris/system.sh
 
-COPY mopidy.conf /root/.config/mopidy_default.conf
+COPY mopidy.conf /mopidy_default.conf
 COPY mopidy.sh /usr/local/bin/mopidy.sh
 
 EXPOSE 6600 6680

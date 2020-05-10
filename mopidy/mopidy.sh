@@ -2,7 +2,7 @@
 
 # Copy config if it does not already exist
 if [ ! -f /mopidy/mopidy.conf ]; then
-    cp /root/.config/mopidy_default.conf /mopidy/mopidy.conf
+    cp /mopidy_default.conf /mopidy/mopidy.conf
 fi
 
 if [ ${APT_PACKAGES:+x} ]; then

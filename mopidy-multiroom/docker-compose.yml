@@ -13,6 +13,6 @@ snapserver:
     ports:
         - "1704:1704"
         - "1705:1705"
-	- "1780:1780"
+        - "1780:1780"
     volumes:
         - fifo:/tmp/snapcast/

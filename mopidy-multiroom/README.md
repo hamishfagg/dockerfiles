@@ -20,11 +20,11 @@ If you want to alter the mopidy config to enable Spotify or Google Play Music fo
 
 
 ## Connect Clients
-You can now connect any Snapcast client you'd like. For convenience I have a dockerfile for a [snapcast client](https://github.com/IVData/dockerfiles/tree/master/snapclient) in this repo. You can also download the Snapcast [Android client](https://play.google.com/store/apps/details?id=de.badaix.snapcast&hl=en) which is really useful for testing and adjusting latencies.
+You can now connect any Snapcast client you'd like. For convenience I have a dockerfile for a [snapcast client](https://github.com/IVData/dockerfiles/tree/master/snapclient) in this repo. You can also connect to your snapserver through the web interface at `http://<your-server-ip>:1780` or download the Snapcast [Android client](https://play.google.com/store/apps/details?id=de.badaix.snapcast&hl=en) which is really useful for testing and adjusting latencies.
 
 ## Play Music
 Mopidy-Multiroom comes with a fully featured UI called [Iris](https://mopidy.com/ext/iris/) which will be available at:  
-`http://<your-server-ip>:6680/iris`  
+`http://<your-server-ip>:6680/iris`. You'll need to run a local scan in the Iris settings if you've added local music.
 
 ## Changing More Mopidy or Snapcast Options
 In order to configure either Mopidy or Snapcast more, you'll need to install and run both of my containers separately in docker. Visit the respective readmes for [Mopidy](https://github.com/IVData/dockerfiles/tree/master/mopidy) and [Snapserver](https://github.com/IVData/dockerfiles/tree/master/snapserver) to get hacking!

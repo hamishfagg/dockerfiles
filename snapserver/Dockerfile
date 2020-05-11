@@ -13,5 +13,6 @@ RUN  dpkg -i snapserver_${snapcast_version}-1_$(echo $TARGETARCH | sed 's/arm/ar
   && rm -rf /var/lib/apt/lists/*
 RUN /usr/bin/snapserver -v
 COPY snapserver.conf /etc/snapserver.conf
-EXPOSE 1704 1705
+COPY index.html /www/index.html
+EXPOSE 1704 1705 1780
 ENTRYPOINT ["/bin/bash","-c","/usr/bin/snapserver"]

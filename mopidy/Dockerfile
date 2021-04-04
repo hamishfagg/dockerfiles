@@ -51,9 +51,11 @@ RUN touch /IS_CONTAINER
 RUN useradd -ms /bin/bash mopidy
 RUN sh -c 'echo "mopidy ALL=NOPASSWD: /usr/local/lib/python3.7/dist-packages/mopidy_iris/system.sh, /usr/bin/apt*" >> /etc/sudoers'
 RUN sed -i 's+--config .*mopidy.conf+--config /mopidy/mopidy.conf+g' /usr/local/lib/python3.7/dist-packages/mopidy_iris/system.sh
+RUN chmod -R mopidy:mopidy /mopidy
 
 COPY mopidy.conf /mopidy_default.conf
 COPY mopidy.sh /usr/local/bin/mopidy.sh
+
 
 EXPOSE 6600 6680
 USER mopidy

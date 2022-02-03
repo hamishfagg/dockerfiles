@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Copy config if it does not already exist
-if [ ! -f /mopidy/mopidy.conf ]; then
-    cp /mopidy_default.conf /mopidy/mopidy.conf
+if [ ! -f /home/mopidy/.config/mopidy/mopidy.conf ]; then
+    cp /mopidy_default.conf /home/mopidy/.config/mopidy/mopidy.conf
 fi
 
 if [ ${APT_PACKAGES:+x} ]; then
@@ -21,4 +21,4 @@ if [ ${UPDATE:+x} ]; then
     pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U # Upgrade all pip packages
 fi
 
-exec mopidy --config /mopidy/mopidy.conf "$@"
+exec mopidy --config /home/mopidy/.config/mopidy/mopidy.conf "$@"

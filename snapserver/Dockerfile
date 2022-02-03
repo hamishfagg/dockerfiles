@@ -1,6 +1,6 @@
 FROM debian:buster-slim
 
-ARG  snapcast_version=0.24.0
+ARG  snapcast_version=0.26.0
 ARG TARGETARCH
 
 RUN  apt-get update \

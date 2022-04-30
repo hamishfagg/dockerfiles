@@ -13,4 +13,4 @@ RUN  dpkg -i snapclient_${snapcast_version}-1_without-pulse_$(echo $TARGETARCH |
   && apt-get -f install -y \
   && rm -rf /var/lib/apt/lists/*
 RUN /usr/bin/snapclient -v
-ENTRYPOINT ["/bin/bash","-c","/usr/bin/snapclient -h $HOST"]
+ENTRYPOINT ["/bin/bash","-c","/usr/bin/snapclient", "-h", "$HOST", "$EXTRA_ARGS"]

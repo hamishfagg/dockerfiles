@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 
 ARG snapcast_version=0.26.0
-ARG TARGETARCH
+ARG TARGETARCH=amd64
 ENV HOST snapserver
 
 RUN  apt-get update \
@@ -13,4 +13,4 @@ RUN  dpkg -i snapclient_${snapcast_version}-1_without-pulse_$(echo $TARGETARCH |
   && apt-get -f install -y \
   && rm -rf /var/lib/apt/lists/*
 RUN /usr/bin/snapclient -v
-ENTRYPOINT ["/bin/bash","-c","/usr/bin/snapclient", "-h", "$HOST", "$EXTRA_ARGS"]
+ENTRYPOINT /usr/bin/snapclient -h $HOST $EXTRA_ARGS

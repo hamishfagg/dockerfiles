@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 
 ARG  snapcast_version=0.26.0
-ARG TARGETARCH
+ARG TARGETARCH=amd64
 
 RUN  apt-get update \
   && apt-get install -y wget ca-certificates \
@@ -14,4 +14,4 @@ RUN  dpkg -i snapserver_${snapcast_version}-1_$(echo $TARGETARCH | sed 's/arm/ar
 RUN /usr/bin/snapserver -v
 COPY snapserver.conf /etc/snapserver.conf
 EXPOSE 1704 1705 1780
-ENTRYPOINT ["/bin/bash","-c","/usr/bin/snapserver", "$EXTRA_ARGS"]
+ENTRYPOINT /usr/bin/snapserver $EXTRA_ARGS

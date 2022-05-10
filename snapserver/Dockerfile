@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 
 ARG  snapcast_version=0.26.0
-ARG TARGETARCH=amd64
+ARG TARGETARCH
 
 RUN  apt-get update \
   && apt-get install -y wget ca-certificates \

@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 
 ARG snapcast_version=0.26.0
-ARG TARGETARCH=amd64
+ARG TARGETARCH
 ENV HOST snapserver
 
 RUN  apt-get update \

@@ -15,6 +15,3 @@ To run, use the command below, but you can change the following values:
 
 ## Config
 You can overwrite snapcast's config by mounting a file to `/etc/snapserver.conf` in the container. The default settings create a single stream called "Snapserver" and enable the [websockets interface](https://github.com/badaix/snapcast-websockets-ui) on port 1780. See the Snapcast docs to create your own config.
-
-## Snapcast Updates
-This dockerfile uses an environment variable for the Snapcast version. If a newer version of Snapcast is available you can rebuild this image to use it - then please let me know that Snapcast has been updated so that I can update my repo.

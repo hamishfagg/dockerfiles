@@ -1,3 +1,4 @@
+# We have to build the develop branch of snapserver for now until the next version is released
 FROM alpine:edge AS builder
 WORKDIR /snapcast
 

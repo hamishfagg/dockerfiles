@@ -7,6 +7,7 @@ mopidy:
         - fifo:/tmp/snapcast/
         - ./music:/media/music
         - ./mopidydata:/home/mopidy/.config/mopidy
+    restart: unless-stopped
 
 snapserver:
     image: "ivdata/snapserver"
@@ -16,3 +17,4 @@ snapserver:
         - "1780:1780"
     volumes:
         - fifo:/tmp/snapcast/
+    restart: unless-stopped

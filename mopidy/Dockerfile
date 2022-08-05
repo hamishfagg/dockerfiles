@@ -8,9 +8,9 @@ RUN apt-get update && \
     gnupg && \
     rm -rf /var/lib/apt/lists/*
 
-RUN  mkdir -p /usr/local/share/keyrings && \
-     wget -q -O /usr/local/share/keyrings/mopidy-archive-keyring.gpg https://apt.mopidy.com/mopidy.gpg && \
-     wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list
+RUN mkdir -p /usr/local/share/keyrings
+RUN wget -q -O /usr/local/share/keyrings/mopidy-archive-keyring.gpg https://apt.mopidy.com/mopidy.gpg
+RUN wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -28,13 +28,13 @@ RUN apt-get update && \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-libav \
     gstreamer1.0-tools \
-    libspotify12 \
-    libspotify-dev \
     libxml2-dev \
     libxslt1-dev \
     libffi-dev \
     libz-dev \
     python3-setuptools \
+    libspotify12 \
+    libspotify-dev \
     python3-spotify && \
     rm -rf /var/lib/apt/lists/*
 
@@ -54,7 +54,8 @@ RUN sed -i 's+--config .*mopidy.conf+--config /home/mopidy/.config/mopidy/mopidy
 
 COPY mopidy.conf /mopidy_default.conf
 COPY mopidy.sh /usr/local/bin/mopidy.sh
+USER mopidy
+RUN mkdir -p /home/mopidy/.config/mopidy/ && cp /mopidy_default.conf /home/mopidy/.config/mopidy/mopidy.conf
 
 EXPOSE 6600 6680
-USER mopidy
 ENTRYPOINT ["/usr/local/bin/mopidy.sh"]

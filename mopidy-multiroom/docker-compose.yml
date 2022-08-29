@@ -1,20 +1,20 @@
-mopidy:
-    image: "ivdata/mopidy"
-    ports:
-        - "6680:6680"
-        - "6600:6600"
-    volumes:
-        - fifo:/tmp/snapcast/
-        - ./music:/media/music
-        - ./mopidydata:/home/mopidy/.config/mopidy
-    restart: unless-stopped
+version: "3.3"
 
-snapserver:
-    image: "ivdata/snapserver"
-    ports:
-        - "1704:1704"
-        - "1705:1705"
-        - "1780:1780"
-    volumes:
-        - fifo:/tmp/snapcast/
-    restart: unless-stopped
+services:
+    mopidy:
+        image: "ivdata/mopidy:test"
+        ports:
+            - "6680:6680"
+            - "6600:6600"
+        volumes:
+            - ./music:/media/music
+            - ./mopidydata:/home/mopidy/.config/mopidy
+        restart: unless-stopped
+
+    snapserver:
+        image: "ivdata/snapserver:test"
+        ports:
+            - "1704:1704"
+            - "1705:1705"
+            - "1780:1780"
+        restart: unless-stopped

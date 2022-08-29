@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
     mopidy:
-        image: "ivdata/mopidy:test"
+        image: "ivdata/mopidy"
         ports:
             - "6680:6680"
             - "6600:6600"
@@ -12,7 +12,7 @@ services:
         restart: unless-stopped
 
     snapserver:
-        image: "ivdata/snapserver:test"
+        image: "ivdata/snapserver"
         ports:
             - "1704:1704"
             - "1705:1705"

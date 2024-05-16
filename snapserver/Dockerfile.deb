@@ -1,11 +1,11 @@
 FROM rust as build-env
-RUN git clone --depth 1 --branch dev https://github.com/librespot-org/librespot.git
+RUN git clone --depth 1 --branch auth-token-from-login5 https://github.com/Gerrelt/librespot.git
 RUN cd librespot && cargo build --release --no-default-features
 
 
 FROM debian:bookworm-slim
 
-ARG  snapcast_version=0.28.0-beta.1
+ARG  snapcast_version=0.28.0
 ARG TARGETARCH
 
 RUN printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d

@@ -1,16 +1,16 @@
 FROM rust as build-env
-RUN git clone --depth 1 --branch auth-token-from-login5 https://github.com/Gerrelt/librespot.git
+RUN git clone --depth 1 --branch master https://github.com/librespot-org/librespot.git
 RUN cd librespot && cargo build --release --no-default-features
 
 
-FROM debian:bookworm-slim
+FROM debian:bookworm
 
 ARG  snapcast_version=0.28.0
 ARG TARGETARCH
 
 RUN printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
 RUN  apt-get update \
-  && apt-get install -y wget ca-certificates avahi-daemon libavahi-compat-libdnssd1\
+  && apt-get install -y wget ca-certificates avahi-daemon libavahi-compat-libdnssd1 wireguard nano \
   && rm -rf /var/lib/apt/lists/*
 RUN  wget https://github.com/badaix/snapcast/releases/download/v${snapcast_version}/snapserver_${snapcast_version}-1_$(echo $TARGETARCH | sed 's/arm/armhf/g')-bookworm.deb
 RUN  dpkg -i snapserver_${snapcast_version}-1_$(echo $TARGETARCH | sed 's/arm/armhf/g')-bookworm.deb \

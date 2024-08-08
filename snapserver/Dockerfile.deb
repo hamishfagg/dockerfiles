@@ -1,0 +1,28 @@
+FROM rust as build-env
+RUN git clone --depth 1 --branch master https://github.com/librespot-org/librespot.git
+RUN cd librespot && cargo build --release --no-default-features
+
+
+FROM debian:bookworm
+
+ARG  snapcast_version=0.28.0
+ARG TARGETARCH
+
+RUN printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
+RUN  apt-get update \
+  && apt-get install -y wget ca-certificates avahi-daemon libavahi-compat-libdnssd1 wireguard nano \
+  && rm -rf /var/lib/apt/lists/*
+RUN  wget https://github.com/badaix/snapcast/releases/download/v${snapcast_version}/snapserver_${snapcast_version}-1_$(echo $TARGETARCH | sed 's/arm/armhf/g')-bookworm.deb
+RUN  dpkg -i snapserver_${snapcast_version}-1_$(echo $TARGETARCH | sed 's/arm/armhf/g')-bookworm.deb \
+  ;  apt-get update \
+  && apt-get -f install -y \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN /usr/bin/snapserver -v
+COPY --from=build-env /librespot/target/release/librespot /usr/bin/librespot
+COPY snapserver.conf /etc/snapserver.conf
+COPY startup.sh startup.sh
+RUN chmod +x ./startup.sh
+
+EXPOSE 1704 1705 1780
+ENTRYPOINT [ "./startup.sh" ]

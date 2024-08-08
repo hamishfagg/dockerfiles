@@ -3,5 +3,5 @@ FROM alpine
 ENV HOST=snapserver
 ENV PORT=4953
 
-RUN apk add -U --no-cache sox netcat-openbsd
-ENTRYPOINT ["sh", "-c", "sox -n -t wav -b 16 -r 48k --buffer 32 - synth brownnoise tremolo .1 20 | nc $HOST $PORT"]
+RUN apk add -U --no-cache sox socat
+ENTRYPOINT ["sh", "-c", "sox -V -n -t wav -b 16 -c 2 -r 48k --buffer 32 - synth brownnoise | socat -u - TCP4:$HOST:$PORT"]

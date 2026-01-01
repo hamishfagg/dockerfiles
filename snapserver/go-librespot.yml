@@ -1,0 +1,21 @@
+device_name: "Snapcast"
+device_type: "speaker"
+
+audio_backend: "pipe"
+audio_output_pipe: "/dev/stdout"
+audio_output_pipe_format: "s16le"
+
+bitrate: 320
+
+normalisation_disabled: false
+normalisation_use_album_gain: true
+normalisation_pregain: 6.0
+
+server:
+  enabled: true
+  port: 24879
+
+credentials:
+  type: zeroconf
+  zeroconf:
+    persist_credentials: true
